@@ -22,7 +22,19 @@ class Usercontroller extends CI_Controller
 		
 		function register()
 		{
-			  $this->load->library('form_validation');
+
+
+            try {
+               // $username=$this->input->post('username');
+              //  if ($username)
+               // {
+               //     echo $username;
+               // }
+
+
+
+
+			     $this->load->library('form_validation');
 
 			  $this->form_validation->set_rules('username','Username','trim|required|alpha_numaric|min_length[1]|xss_clean|strtolower');
 			  $this->form_validation->set_rules('first_name','First Name','trim|required|alpha_numaric|min_length[1]|xss_clean');
@@ -31,9 +43,9 @@ class Usercontroller extends CI_Controller
               $this->form_validation->set_rules('email','Email','trim|required|xss_clean|valid_email');
               $this->form_validation->set_rules('password','Password','trim|required|alpha_numaric|min_length[3]|xss_clean');
 			  $this->form_validation->set_rules('conf_password','Conformation Password','trim|required|alpha_numaric|min_length[3]|matches[password]|xss_clean');
-			  $this->form_validation->set_rules('phone','phone','trim|required|numeric|min_length[10]');
-			  $this->form_validation->set_rules('phone_ext','Phone Ext','trim|required|numeric|min_length[3]');
-			  $this->form_validation->set_rules('company_id','Company ID','trim|required|required|numaric|min_length[3]');
+			  $this->form_validation->set_rules('phone','phone','trim|required|numeric|min_length[10]|max_length[12]');
+			  $this->form_validation->set_rules('phone_ext','Phone Ext','trim|required|numeric|min_length[3]|max_length[4]');
+			  $this->form_validation->set_rules('company_id','Company ID','trim|required|required|numaric|min_length[3]|max_length[10]');
 			  $this->form_validation->set_rules('Usergroup','User Group','trim|required');
 			  $this->form_validation->set_rules('Usertype','User Type','trim|required');
 
@@ -41,7 +53,11 @@ class Usercontroller extends CI_Controller
 
 			  if($this->form_validation->run()==FALSE)
 				{
-				 $this->load->view('user_view',$this->view_data);
+                   //echo "*************8";
+                    $data['usrgrp_result'] = $this->usermodel->usrgrpdata();
+                    $data['usrtype_result'] = $this->usermodel->usrtype();
+
+                    $this->load->view('user_view', $data);
 				}
 			  else
 				{
@@ -72,8 +88,25 @@ class Usercontroller extends CI_Controller
                         mysend_email($from,$sendername,$email,$subject,$message);
 
                     }
-	  $this->usermodel->register_user($username,$firstname,$middlename,$lastname,$password,$companyid,$phone,$phonext,$usergroup,$usertype);
+	              $this->usermodel->register_user($username,$firstname,$middlename,$lastname,$password,$companyid,$phone,$phonext,$usergroup,$usertype);
 				}
+
+
+
+            //else
+                //{
+                    //throw new Exception("user name is empty");
+                //}
+
+
+            }
+             catch (Exception $e)
+            {
+                    echo "we are in catch block";
+                //log_message('error','LOG'.$e->getMessage());
+                @trigger_error($e->getMessage(), E_USER_ERROR);
+                return;
+            }
 		}
 
 

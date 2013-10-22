@@ -1,29 +1,27 @@
 <?php
 //echo form_open('$base_url','user/register');
-echo form_open('usercontroller/register');
-
 
 
 $username=array(
     'name'=>'username',
     'id' =>'username',
-    'value'=>''
+    'value'=> set_value('username')
 );
 
 $firstname=array(
     'name'=>'first_name',
     'id' =>'first_name',
-    'value'=>''
+    'value'=>set_value('first_name')
 );
 $middlename=array(
     'name'=>'middle_name',
     'id' =>'middle_name',
-    'value'=>''
+    'value'=>set_value('middle_name')
 );
 $lastname=array(
     'name'=>'last_name',
     'id' =>'last_name',
-    'value'=>''
+    'value'=>set_value('last_name')
 );
 
 $password=array(
@@ -34,12 +32,12 @@ $password=array(
 $companyid=array(
     'name'=>'company_id',
     'id' =>'company_id',
-    'value'=>''
+    'value'=>set_value('company_id')
 );
 $email=array(
     'name'=>'email',
     'id' =>'email',
-    'value'=>''
+    'value'=>set_value('email')
 );
 $conf_password=array(
     'name'=>'conf_password',
@@ -49,12 +47,12 @@ $conf_password=array(
 $phone=array(
     'name'=>'phone',
     'id' =>'phone',
-    'value'=>''
+    'value'=>set_value('phone')
 );
 $phonext=array(
     'name'=>'phone_ext',
     'id' =>'phone_ext',
-    'value'=>''
+    'value'=>set_value('phone_ext')
 );
 
 
@@ -72,7 +70,7 @@ foreach($usrgrp_result as $data) {
     $usergroup_options[$grpid] = $data['GroupDescription'];
 }
 
-print_r($usergroup_options);
+//print_r($usergroup_options);
 
 //$usergroup_options= array('1' => 'GRP1','2' => 'GRP2',);
 
@@ -198,85 +196,100 @@ $checkbox = array(
 
 
     <h2>User Registration</h2>
+<?php echo form_open('usercontroller/register');
 
+$this->form_validation->set_error_delimiters('<div class="error" style="color:red">', '</div>'); ?>
     <ul>
         <li><div>
-            <label>Username</label>
+            <label>Username *</label>
             <?php echo form_input($username); ?>  </div>
+            <span> <?php echo form_error('username'); ?></span>
         </li>
 
         <li> <div>
-            <label>First Name</label>
+            <label>First Name *</label>
            <?php echo form_input($firstname); ?>  </div>
+            <span> <?php echo form_error('first_name'); ?></span>
         </li>
         <li> <div>
             <label>Middle Name</label>
             <?php echo form_input($middlename); ?>  </div>
+            <span> <?php echo form_error('middle_name'); ?></span>
         </li>
         <li> <div>
-            <label>Last Name</label>
+            <label>Last Name *</label>
             <?php echo form_input($lastname); ?>  </div>
+            <span> <?php echo form_error('last_name'); ?></span>
         </li>
         <li> <div>
-            <label>Email</label>
+            <label>Email *</label>
             <?php echo form_input($email); ?>  </div>
+            <span> <?php echo form_error('email'); ?></span>
         </li>
 
 
         <li> <div>
 
-            <label>Password</label>
+            <label>Password *</label>
             <?php echo form_password($password); ?>  </div>
+            <span> <?php echo form_error('password'); ?></span>
         </li>
 
         <li> <div>
-            <label>Confirm Password</label>
+            <label>Confirm Password *</label>
             <?php echo form_password($conf_password); ?>  </div>
+            <span> <?php echo form_error('conf_password'); ?></span>
         </li>
 
         <li> <div>
-            <label>Phone</label>
+            <label>Phone *</label>
             <?php echo form_input($phone); ?>  </div>
+            <span> <?php echo form_error('phone'); ?></span>
         </li>
         <li> <div>
-            <label>Phone Ext</label>
+            <label>Phone Ext *</label>
             <?php echo form_input($phonext); ?>  </div>
+            <span> <?php echo form_error('phone_ext'); ?></span>
         </li>
         <li> <div>
-            <label>Company ID </label>
+            <label>Company ID * </label>
            <?php echo form_input($companyid); ?>  </div>
+            <span> <?php echo form_error('company_id'); ?></span>
         </li>
         <li> <div>
-            <label>User Type </label>
+            <label>User Type *</label>
             <?php
                 //$shirts_on_sale = array('small', 'large');
-                echo form_dropdown('Usertype', $usertype_options, 'Select');
+            $select=set_value('Usertype');
+                echo form_dropdown('Usertype', $usertype_options, $select);
                 ?>
+                <span> <?php echo form_error('Usertype'); ?></span>
         </li>
         <li> <div>
-            <label>User Group </label>
+            <label>User Group *</label>
             <?php
-                //$shirts_on_sale = array('small', 'large');
-                echo form_dropdown('Usergroup', $usergroup_options, 'Select');
+            $select=set_value('Usergroup');
+                echo form_dropdown('Usergroup', $usergroup_options, $select);
                 ?></div>
+            <span> <?php echo form_error('Usergroup'); ?></span>
         </li>
 
         <li> <div>
             <label>Send an update email to user </label>
            <?php
-                //$shirts_on_sale = array('small', 'large');
+
                 echo form_checkbox($checkbox);
 
                 ?>
-        </li>
-        <?php echo validation_errors(); ?>
-        </li>
 
 
         <li>
             <div><?php echo form_submit(array('name'=>'register'),'Register');?></div>
-        </li>
 
+        </li>
+        <li>
+            <div><a href='http://localhost:8080/github/codeigniter/index.php/usercontroller'>Cancel</a></div>
+        </li>
 
 
     </ul>
