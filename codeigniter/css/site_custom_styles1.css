@@ -1,6 +1,68 @@
 @charset "utf-8";
 /* CSS Document */
 
+
+/* Large desktop */
+@media (min-width: 1200px) {
+	
+
+
+{
+
+
+}
+ }
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) 
+
+{
+	
+	.row-offcanvas-left
+  .sidebar-offcanvas {
+    left:-15.2% !important; /* 6 columns */
+  }
+  
+  .toggleiconmenu { position:absolute !important; left:0px !important;}
+  
+  .row-offcanvas-left.active {
+    left: 13% !important; /* 6 columns */
+  }
+	
+	
+	
+	
+	
+	
+  }
+
+
+	 }
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {  }
+
+/* Landscape phones and down */
+@media (max-width: 480px) { 
+
+
+.row-offcanvas-left
+  .sidebar-offcanvas {
+    left:-20.2% !important; /* 6 columns */
+  }
+  
+  .toggleiconmenu { position:absolute !important; left:0px !important;}
+  
+  .row-offcanvas-left.active {
+    left: 38% !important; /* 6 columns */
+
+
+
+
+ }
+
+}
+
 @font-face
 
 {
@@ -57,12 +119,12 @@ body{ }
 
 .userani2 {height:45px; font-family:flat; font-size:22px;}
 
-.nav-pills li a{width: 129px;
-background-color:#1063B8; color: rgb(219, 219, 219);padding-left: 11px;}
+.nav-pills li a{
+background-color:#1063B8; color: rgb(219, 219, 219);}
 
 .nav-pills li i{
 
-font-size: 50px; color: rgb(219, 219, 219);margin-left: 5px;
+font-size: 40px; color: rgb(219, 219, 219);
 }
 
 
@@ -121,6 +183,7 @@ background-color: #093344;
 -moz-box-shadow: #323232 0 1px 0;
 box-shadow: #323232 0 1px 0;
 font-family:flat;
+width:184px;
 }
 
 .left_menu a:hover
@@ -135,10 +198,53 @@ background-color: #2E5768;
 
 @media screen and (max-width: 767px) {
 	
-	.sidebar-offcanvas p{visibility:hidden;}
+	
+	
+	.navbar{margin-top: -45px;}
+	
+	.profiledet {float:right; padding-right:10px;}
+	
+	.usrdet{width:300px;}
+	
+	.usrdet li {float:left; padding:5px 15px;}
+	
+	
+	
+	.row-offcanvas-left
+  .sidebar-offcanvas {
+    left:-20.2% !important; /* 6 columns */
+  }
+  
+  .toggleiconmenu { position:absolute !important; left:0px !important;}
+  
+  .row-offcanvas-left.active {
+    left: 18% !important; /* 6 columns */
+  }
+	
+	
 	
 	
 	}
 
 .nex_row  {padding:35px;}
 
+.topnav a {padding: 16px 26px !important}
+
+
+.usergropadminblock{font-family:flat;}
+
+.usergropadminblock h3{font-family:flat;}
+
+.sorting_1 {}
+
+thead{color: white;
+background-color:#7EB7E7;
+font-family: sans-serif;
+
+
+}
+
+table td {}
+
+
+table .control-label {line-height: 2;}

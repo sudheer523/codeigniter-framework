@@ -62,7 +62,20 @@ foreach($usrgrp_result as $data) {
     $usergroup_options['']='Select';
     $usergroup_options[$grpid] = $data['GroupDescription'];
 }
+foreach($result as $data)
+{
+    $userid['value']=$data['UserName'];
+    $firstname['value']=$data['FirstName'];
 
+    $lastname['value']=$data['LastName'];
+
+    $email['value']=$data['Email'];
+    $cmsid['value']=$data['CMSID'];
+    $phone['value']=$data['Phone'];
+    $selected_grp_edit=$data['UserGroupId'];
+    $selected_type_edit=$data['UserTypeId'];
+
+}
 
 //print_r($usergroup_options);
 
@@ -219,7 +232,7 @@ $checkbox = array(
     <div class="usergropadminblock">
 
 
-        <p style=" font-size:20px;">Add User
+        <p style=" font-size:20px;">Edit User
 
         <hr style="margin:0px; padding:10px;">
 
@@ -230,111 +243,114 @@ $checkbox = array(
 
             <?php
             $attributes = array('class' => 'form-horizontal', 'id' => 'form-horizontal');
-            echo form_open('usercontroller/register',$attributes);
+            echo form_open('usereditcontroller/save',$attributes);
 
             $this->form_validation->set_error_delimiters('<span class="error" style="color:red">', '</span>'); ?>
 
-            <div class="form-group">
-                <div class="col-xs-4 text-right control-label">
-                    First Name
-                </div>
-                <div class="col-md-5 col-xs-8">
-                    <?php echo form_input($firstname); ?>
-                    <span> <?php echo form_error('first_name'); ?></span>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-xs-4 text-right control-label">
-                    Last Name
-                </div>
-                <div class="col-md-5 col-xs-8">
-                    <?php echo form_input($lastname); ?>
-                    <span> <?php echo form_error('first_name'); ?></span>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-xs-4 text-right control-label">
-                    User Id
-                </div>
-                <div class="col-md-5 col-xs-8">
-                    <?php echo form_input($userid); ?>
-                    <span class="error" style="color:red"><?php echo $usr_error;?> </span>
-                    <span> <?php echo form_error('userid'); ?></span>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-xs-4 text-right control-label">
-                    Email
-                </div>
-                <div class="col-md-5 col-xs-8">
-                    <?php echo form_input($email); ?>
-                    <span class="error" style="color:red"><?php echo $email_error;?> </span>
+                <div class="form-group">
 
-                    <span> <?php echo form_error('email'); ?></span>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-xs-4 text-right control-label">
-                    Phone
-                </div>
-                <div class="col-md-5 col-xs-8">
-                    <?php echo form_input($phone); ?>
-                    <span> <?php echo form_error('phone'); ?></span>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-xs-4 text-right control-label">
-                    Group
-                </div>
-                <div class="col-md-5 col-xs-8">
-                    <?php
-                    $attr='class ="form-control" ';
-                    $select=set_value('Usergroup');
-                    echo form_dropdown('Usergroup', $usergroup_options, $select,$attr);
-                    ?>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-xs-4 text-right control-label">
-                    User Type
-                </div>
-                <div class="col-md-5 col-xs-8">
-                    <?php
-                    //$shirts_on_sale = array('small', 'large');
-                    $select=set_value('Usertype');
-                    $attr='class ="form-control" ';
-                    echo form_dropdown('Usertype', $usertype_options, $select,$attr);
-                    ?>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-xs-4 text-right control-label">
-                    CMS Id
-                </div>
-                <div class="col-md-5 col-xs-8">
-                    <?php echo form_input($cmsid); ?>
-                    <span> <?php echo form_error('cms_id'); ?></span>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-6 col-md-offset-4">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="">
-                            Send an update email to the user </label>
+                    <?php echo form_hidden('user_id', $usr_id);?>
+                    <div class="col-xs-4 text-right control-label">
+                        First Name
+                    </div>
+                    <div class="col-md-5 col-xs-8">
+                        <?php echo form_input($firstname); ?>
+                         <span> <?php echo form_error('first_name'); ?></span>
                     </div>
                 </div>
-            </div>
+                <div class="form-group">
+                    <div class="col-xs-4 text-right control-label">
+                        Last Name
+                    </div>
+                    <div class="col-md-5 col-xs-8">
+                        <?php echo form_input($lastname); ?>
+                        <span> <?php echo form_error('first_name'); ?></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-4 text-right control-label">
+                        User Id
+                    </div>
+                    <div class="col-md-5 col-xs-8">
+                        <?php echo form_input($userid); ?>
+                        <span class="error" style="color:red"><?php echo $usr_error;?> </span>
+                        <span> <?php echo form_error('userid'); ?></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-4 text-right control-label">
+                        Email
+                    </div>
+                    <div class="col-md-5 col-xs-8">
+                        <?php echo form_input($email); ?>
+                        <span> <?php echo form_error('email'); ?></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-4 text-right control-label">
+                        Phone
+                    </div>
+                    <div class="col-md-5 col-xs-8">
+                        <?php echo form_input($phone); ?>
+                        <span> <?php echo form_error('phone'); ?></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-4 text-right control-label">
+                        Group
+                    </div>
+                    <div class="col-md-5 col-xs-8">
+                        <?php
+                        $attr='class ="form-control" ';
+                        $select=set_value($selected_grp_edit);
+                        $select=$selected_grp_edit;
+                        echo form_dropdown('Usergroup', $usergroup_options, $select,$attr);
+                        ?>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-4 text-right control-label">
+                        User Type
+                    </div>
+                    <div class="col-md-5 col-xs-8">
+                        <?php
+                        //$shirts_on_sale = array('small', 'large');
+                        $select=set_value($selected_type_edit);
+                        $attr='class ="form-control" ';
+                        $select=$selected_type_edit;
+
+                        echo form_dropdown('Usertype', $usertype_options, $select,$attr);
+                        ?>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-4 text-right control-label">
+                        CMS Id
+                    </div>
+                    <div class="col-md-5 col-xs-8">
+                        <?php echo form_input($cmsid); ?>
+                        <span> <?php echo form_error('cms_id'); ?></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6 col-md-offset-4">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="">
+                                Send an update email to the user </label>
+                        </div>
+                    </div>
+                </div>
 
 
-            <div class="form-group">
-                <div class="col-xs-6 text-right" style="margin-left:20px;">
-                    <?php echo form_submit(array('name'=>'save'),'Save');?>
+                <div class="form-group">
+                    <div class="col-xs-6 text-right" style="margin-left:20px;">
+                        <?php echo form_submit(array('name'=>'save'),'Save');?>
+                    </div>
+                    <div class="col-xs-4" style="line-height:2; text-decoration:underline;">
+                        <a href='http://localhost:8080/github/codeigniter/index.php/usereditcontroller'>Cancel</a>
+                    </div>
                 </div>
-                <div class="col-xs-4" style="line-height:2; text-decoration:underline;">
-                    <a href='http://localhost:8080/github/codeigniter/index.php/usercontroller'>Cancel</a>
-                </div>
-            </div>
 
 
             </form>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Safe Guard</title>
+  
+            <meta name="viewport" content="width=device-width, initial-scale=0.7">
+            
+            <!-- Bootstrap -->
+            <link href="css/bootstrap.css" rel="stylesheet" media="screen">
+            <link href="css/offcanvas.css" rel="stylesheet" media="all">
+            <link href="css/font-awesome.min.css" rel="stylesheet" media="all">
+          
+            
+            
+            <!--plugins css-->
+            
+            <!--custom css-->
+            <link href="css/site_custom_styles.css" rel="stylesheet" media="screen">
+            
+            
+            
+            <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+            <!--[if lt IE 9]>
+              <script src="../../assets/js/html5shiv.js"></script>
+              <script src="../../assets/js/respond.min.js"></script>
+            <![endif]-->
+            
+            
+  </head>
+  
+  
+  
+<body>
+
+
+<div class="row" style="background-color:white;border-bottom: solid 1px rgb(233, 211, 211);">
+
+<div class="col-md-2"><a href="index.html"><img src="images/sitelogo.jpg" class="nonex_logo"></a></div>
+
+<div class="col-md-10">
+
+<nav class="navbar" role="navigation" style="margin-top:5px;">
+<!-- Brand and toggle get grouped for better mobile display -->
+  
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="nav nav-tabs">
+    <ul  class="nav navbar-nav nav-pills pull-right">
+      <li class="h"><a href="#"><i class="icon-home "></i> Home</a></li>
+      <li class="s"><a href="#"><i class="icon-tags"></i> Sales</a></li>
+      <li class="se"><a href="#"><i class="icon-bar-chart"></i> Claims</a></li>
+      <li class="l"><a href="#"><i class="icon-group"></i> Risk Management</a></li>
+      <li class="se"><a href="#"><i class="icon-book"></i>  Accounting</a></li>
+      <li class="o"><a href="#"><i class="icon-cogs"></i> Operations</a></li>
+      <li class="l"><a href="#" data-toggle="popover" data-html="true" data-content='
+      
+      <button class="btn btn-md btn-primary btn-block" style="width:150px;"><i class="icon-wrench"></i> Settings</button>
+      <button class="btn btn-md btn-primary btn-block"><i class="icon-power-off"></i> Logout</button>
+      
+      'data-placement ="auto top" id="user"><i class="icon-user"></i> User Profile</a></li>
+      
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</nav>
+
+</div>
+</div>  
+ 
+ 
+ 
+
+
+<div class="row row-offcanvas row-offcanvas-left">
+
+            <div class="col-xs-2 col-sm-2 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
+                        <div class="list-group left_menu">
+                        <a href="#" class="list-group-item active"><span style="font-weight:bold; font-size:20px;">Menu</span></a>
+                        <a href="#" class="list-group-item"> <i class="icon-dashboard"></i><p>Dashboard</p></a>
+                        <a href="#" class="list-group-item"><i class="icon-list-alt"></i><p>Events</p></a>
+                        <a href="#" class="list-group-item"><i class="icon-search"></i><p>Monitor</p></a>
+                        <a href="#" class="list-group-item"><i class="icon-envelope"></i><p>Messages</p></a>
+                        <a href="#" class="list-group-item"><i class="icon-check"></i><p>Orders</p></a>
+                        <a href="#" class="list-group-item"><i class="icon-comment-alt"></i><p>F.A.Qs</p> </a>
+                        <a href="#" class="list-group-item"><i class="icon-bullhorn"></i><p>Announcements</p></a>
+                        <a href="#" class="list-group-item"><p>Messages</p></a>
+                        <a href="#" class="list-group-item"><p>Messages</p></a>
+                        </div>
+            </div>
+        
+
+            <p class="pull-left ">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas" style="z-index: 200; top: 3px; position: absolute;left: 20px;">
+            <i class="icon-align-justify"></i></button>
+            </p>
+  
+
+
+
+</div>
+
+
+
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery-1.10.2.min.js"></script>
+
+<script  type="text/javascript">
+
+$(document).ready(function() {
+  $('[data-toggle=offcanvas]').click(function() {
+    $('.row-offcanvas').toggleClass('active');
+  });
+  
+  $('#user').popover();
+ 
+});
+
+</script>
+
+
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+            
+<script src="js/bootstrap.min.js"></script>
+<script src="js/tooltip.js"></script>
+            
+            
+
+
+</body>
+</html>
